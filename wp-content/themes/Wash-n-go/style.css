@@ -1,0 +1,52 @@
+/*
+Theme Name: Wash N Go
+Author: Rizwan
+Description: A professional car wash and detailing WordPress theme.
+Version: 1.0
+Text Domain: wash-n-go
+*/
+
+:root {
+  --wash-ink: #101223;
+  --wash-navy: #172554;
+  --wash-cyan: #00a6d6;
+  --wash-gold: #f6b90f;
+  --wash-green: #14b86a;
+  --wash-mist: #f4fbfd;
+  --wash-line: #dbe7ee;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #ffffff;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #ffffff;
+  color: var(--wash-ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin-top: 0 !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
