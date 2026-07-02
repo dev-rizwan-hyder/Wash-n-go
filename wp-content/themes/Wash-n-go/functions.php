@@ -59,10 +59,13 @@ function washngo_enqueue_assets()
     wp_enqueue_style('washngo-main', get_template_directory_uri() . '/assets/css/main.css', array('washngo-style'), washngo_asset_version('/assets/css/main.css'));
     wp_enqueue_style('washngo-header', get_template_directory_uri() . '/assets/css/header.css', array('washngo-main'), washngo_asset_version('/assets/css/header.css'));
     wp_enqueue_style('washngo-footer', get_template_directory_uri() . '/assets/css/footer.css', array('washngo-main'), washngo_asset_version('/assets/css/footer.css'));
+    wp_enqueue_style('washngo-pages', get_template_directory_uri() . '/assets/css/pages.css', array('washngo-header', 'washngo-footer'), washngo_asset_version('/assets/css/pages.css'));
 
     wp_enqueue_script('washngo-main', get_template_directory_uri() . '/assets/js/main.js', array(), washngo_asset_version('/assets/js/main.js'), true);
 }
 add_action('wp_enqueue_scripts', 'washngo_enqueue_assets');
+
+require_once get_template_directory() . '/inc/custom-pages.php';
 
 /**
  * Add floating WhatsApp button to all pages.

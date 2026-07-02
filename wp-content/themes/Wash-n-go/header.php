@@ -656,19 +656,35 @@ if (function_exists('wp_body_open')) {
                             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                         </button>
 
-                        <div class="wng-dropdown" data-dropdown-menu>
-                            <a href="<?php echo esc_url(home_url('/services/interior-detailing/')); ?>">Interior Detailing Service</a>
-                            <a href="<?php echo esc_url(home_url('/services/exterior-detailing/')); ?>">Exterior Detailing Services</a>
-                            <a href="<?php echo esc_url(home_url('/services/complete-detailing/')); ?>">Complete Detailing Service</a>
-                            <a href="<?php echo esc_url(home_url('/services/fleet-detailing/')); ?>">Fleet Detailing Services</a>
-                            <a href="<?php echo esc_url(home_url('/services/mobile-rv-detailing/')); ?>">Mobile RV Detailing Services</a>
+                        <div class="wng-dropdown wng-dropdown--services" data-dropdown-menu>
+                            <a href="<?php echo esc_url(home_url('/services/')); ?>">All Services</a>
+                            <?php foreach (washngo_core_services() as $service) : ?>
+                                <a href="<?php echo esc_url(home_url($service['path'])); ?>">
+                                    <?php echo esc_html($service['short_title']); ?>
+                                </a>
+                            <?php endforeach; ?>
                         </div>
                     </li>
 
-                    <li>
-                        <a class="<?php echo washngo_nav_class('wng-nav-link', '/locations/'); ?>" href="<?php echo esc_url(home_url('/locations/')); ?>">
-                            Locations
-                        </a>
+                    <li class="wng-has-dropdown" data-dropdown>
+                        <button class="<?php echo washngo_nav_class('wng-nav-link', '/locations/'); ?>" type="button" aria-expanded="false" data-dropdown-toggle>
+                            <span>Locations</span>
+                            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="wng-dropdown wng-dropdown--locations" data-dropdown-menu>
+                            <a href="<?php echo esc_url(home_url('/locations/')); ?>">All Locations</a>
+                            <a href="<?php echo esc_url(home_url('/locations/dallas-tx/')); ?>">Dallas, TX</a>
+                            <a href="<?php echo esc_url(home_url('/locations/plano-tx/')); ?>">Plano, TX</a>
+                            <a href="<?php echo esc_url(home_url('/locations/frisco-tx/')); ?>">Frisco, TX</a>
+                            <a href="<?php echo esc_url(home_url('/locations/mckinney-tx/')); ?>">McKinney, TX</a>
+                            <a href="<?php echo esc_url(home_url('/locations/allen-tx/')); ?>">Allen, TX</a>
+                            <a href="<?php echo esc_url(home_url('/locations/richardson-tx/')); ?>">Richardson, TX</a>
+                            <a href="<?php echo esc_url(home_url('/locations/garland-tx/')); ?>">Garland, TX</a>
+                            <a href="<?php echo esc_url(home_url('/locations/irving-tx/')); ?>">Irving, TX</a>
+                            <a href="<?php echo esc_url(home_url('/locations/arlington-tx/')); ?>">Arlington, TX</a>
+                            <a href="<?php echo esc_url(home_url('/locations/fort-worth-tx/')); ?>">Fort Worth, TX</a>
+                        </div>
                     </li>
 
                     <li class="wng-has-dropdown" data-dropdown>
@@ -677,11 +693,13 @@ if (function_exists('wp_body_open')) {
                             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                         </button>
 
-                        <div class="wng-dropdown" data-dropdown-menu>
-                            <a href="<?php echo esc_url(home_url('/add-ons/ceramic-coating/')); ?>">Ceramic Coating</a>
-                            <a href="<?php echo esc_url(home_url('/add-ons/paint-correction/')); ?>">Paint Correction</a>
-                            <a href="<?php echo esc_url(home_url('/add-ons/headlight-restoration/')); ?>">Headlight Restoration</a>
-                            <a href="<?php echo esc_url(home_url('/add-ons/engine-bay-cleaning/')); ?>">Engine Bay Cleaning</a>
+                        <div class="wng-dropdown wng-dropdown--addons" data-dropdown-menu>
+                            <a href="<?php echo esc_url(home_url('/add-ons/')); ?>">All Add-Ons</a>
+                            <?php foreach (washngo_addon_services() as $addon) : ?>
+                                <a href="<?php echo esc_url(home_url($addon['path'])); ?>">
+                                    <?php echo esc_html($addon['short_title']); ?>
+                                </a>
+                            <?php endforeach; ?>
                         </div>
                     </li>
 
@@ -743,18 +761,36 @@ if (function_exists('wp_body_open')) {
                     <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
 
-                <div class="wng-mobile-submenu" data-mobile-submenu>
-                    <a href="<?php echo esc_url(home_url('/services/interior-detailing/')); ?>">Interior Detailing Service</a>
-                    <a href="<?php echo esc_url(home_url('/services/exterior-detailing/')); ?>">Exterior Detailing Services</a>
-                    <a href="<?php echo esc_url(home_url('/services/complete-detailing/')); ?>">Complete Detailing Service</a>
-                    <a href="<?php echo esc_url(home_url('/services/fleet-detailing/')); ?>">Fleet Detailing Services</a>
-                    <a href="<?php echo esc_url(home_url('/services/mobile-rv-detailing/')); ?>">Mobile RV Detailing Services</a>
+                <div class="wng-mobile-submenu wng-mobile-submenu--long" data-mobile-submenu>
+                    <a href="<?php echo esc_url(home_url('/services/')); ?>">All Services</a>
+                    <?php foreach (washngo_core_services() as $service) : ?>
+                        <a href="<?php echo esc_url(home_url($service['path'])); ?>">
+                            <?php echo esc_html($service['short_title']); ?>
+                        </a>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
-            <a class="<?php echo washngo_nav_class('wng-mobile-link', '/locations/'); ?>" href="<?php echo esc_url(home_url('/locations/')); ?>">
-                Locations
-            </a>
+            <div class="wng-mobile-group" data-mobile-group>
+                <button class="<?php echo washngo_nav_class('wng-mobile-link wng-mobile-dropdown-toggle', '/locations/'); ?>" type="button" aria-expanded="false" data-mobile-toggle>
+                    <span>Locations</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+
+                <div class="wng-mobile-submenu wng-mobile-submenu--locations" data-mobile-submenu>
+                    <a href="<?php echo esc_url(home_url('/locations/')); ?>">All Locations</a>
+                    <a href="<?php echo esc_url(home_url('/locations/dallas-tx/')); ?>">Dallas, TX</a>
+                    <a href="<?php echo esc_url(home_url('/locations/plano-tx/')); ?>">Plano, TX</a>
+                    <a href="<?php echo esc_url(home_url('/locations/frisco-tx/')); ?>">Frisco, TX</a>
+                    <a href="<?php echo esc_url(home_url('/locations/mckinney-tx/')); ?>">McKinney, TX</a>
+                    <a href="<?php echo esc_url(home_url('/locations/allen-tx/')); ?>">Allen, TX</a>
+                    <a href="<?php echo esc_url(home_url('/locations/richardson-tx/')); ?>">Richardson, TX</a>
+                    <a href="<?php echo esc_url(home_url('/locations/garland-tx/')); ?>">Garland, TX</a>
+                    <a href="<?php echo esc_url(home_url('/locations/irving-tx/')); ?>">Irving, TX</a>
+                    <a href="<?php echo esc_url(home_url('/locations/arlington-tx/')); ?>">Arlington, TX</a>
+                    <a href="<?php echo esc_url(home_url('/locations/fort-worth-tx/')); ?>">Fort Worth, TX</a>
+                </div>
+            </div>
 
             <div class="wng-mobile-group" data-mobile-group>
                 <button class="<?php echo washngo_nav_class('wng-mobile-link wng-mobile-dropdown-toggle', '/add-ons/'); ?>" type="button" aria-expanded="false" data-mobile-toggle>
@@ -762,11 +798,13 @@ if (function_exists('wp_body_open')) {
                     <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
 
-                <div class="wng-mobile-submenu" data-mobile-submenu>
-                    <a href="<?php echo esc_url(home_url('/add-ons/ceramic-coating/')); ?>">Ceramic Coating</a>
-                    <a href="<?php echo esc_url(home_url('/add-ons/paint-correction/')); ?>">Paint Correction</a>
-                    <a href="<?php echo esc_url(home_url('/add-ons/headlight-restoration/')); ?>">Headlight Restoration</a>
-                    <a href="<?php echo esc_url(home_url('/add-ons/engine-bay-cleaning/')); ?>">Engine Bay Cleaning</a>
+                <div class="wng-mobile-submenu wng-mobile-submenu--long" data-mobile-submenu>
+                    <a href="<?php echo esc_url(home_url('/add-ons/')); ?>">All Add-Ons</a>
+                    <?php foreach (washngo_addon_services() as $addon) : ?>
+                        <a href="<?php echo esc_url(home_url($addon['path'])); ?>">
+                            <?php echo esc_html($addon['short_title']); ?>
+                        </a>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -788,7 +826,7 @@ if (function_exists('wp_body_open')) {
                     Call Now
                 </a>
 
-                <a class="wng-mobile-book" href="<?php echo esc_url(home_url('/book-now/')); ?>">
+                <a class="wng-mobile-book" href="<?php echo esc_url(home_url('/contact/')); ?>">
                     <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
                     Book an Appointment
                 </a>

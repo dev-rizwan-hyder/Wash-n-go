@@ -111,6 +111,46 @@
   });
 
   ready(() => {
+    const animatedItems = document.querySelectorAll('[data-animate]');
+
+    if (animatedItems.length) {
+      if (!('IntersectionObserver' in window)) {
+        animatedItems.forEach((item) => item.classList.add('is-visible'));
+      } else {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        }, {
+          rootMargin: '0px 0px -12% 0px',
+          threshold: 0.12,
+        });
+
+        animatedItems.forEach((item) => observer.observe(item));
+      }
+    }
+
+    document.querySelectorAll('[data-booking-form]').forEach((form) => {
+      form.addEventListener('submit', (event) => {
+        const status = form.querySelector('[data-form-status]');
+
+        if (!status) {
+          return;
+        }
+
+        event.preventDefault();
+        status.classList.remove('hidden');
+        status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  });
+
+  ready(() => {
     const tabButtons = document.querySelectorAll('[data-pricing-tab]');
     const tabContents = document.querySelectorAll('[data-pricing-content]');
 

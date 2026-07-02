@@ -1,0 +1,44 @@
+# WordPress core files
+/wp-admin/
+/wp-includes/
+index.php
+license.txt
+readme.html
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config.php
+wp-config-sample.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+
+# Uploads - don't push user uploaded images/files
+/wp-content/uploads/
+
+# Cache and backup files
+/wp-content/cache/
+/wp-content/backups/
+/wp-content/backup-db/
+/wp-content/upgrade/
+/wp-content/wflogs/
+
+# Logs
+*.log
+error_log
+debug.log
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Environment files
+.env

@@ -1,0 +1,86 @@
+.washngo-custom-page .site-content {
+  background: #ffffff;
+}
+
+.wng-page-hero {
+  isolation: isolate;
+}
+
+.wng-page-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.wng-page-card::after {
+  position: absolute;
+  inset: 0;
+  width: 42%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
+  content: "";
+  pointer-events: none;
+  transform: translateX(-140%);
+  transition: transform 720ms ease;
+}
+
+.wng-page-card:hover::after {
+  transform: translateX(250%);
+}
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body .wng-dropdown--locations {
+  width: 390px;
+  columns: 2;
+}
+
+body .wng-dropdown--services,
+body .wng-dropdown--addons {
+  width: 430px;
+  columns: 2;
+}
+
+body .wng-dropdown--locations a {
+  break-inside: avoid;
+}
+
+body .wng-dropdown--services a,
+body .wng-dropdown--addons a {
+  break-inside: avoid;
+}
+
+body .wng-mobile-group.is-open .wng-mobile-submenu--locations,
+body .wng-mobile-group.is-open .wng-mobile-submenu--long {
+  max-height: 760px;
+  overflow: visible;
+}
+
+@media (max-width: 640px) {
+  .washngo-custom-page h1,
+  .washngo-custom-page h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .washngo-custom-page .rounded-\[2rem\] {
+    border-radius: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  [data-animate].is-visible,
+  .wng-page-card,
+  .wng-page-card::after {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
